@@ -118,7 +118,6 @@ if __name__ == '__main__':
 
     env_name = 'Pendulum-v1'
     env = gym.make(env_name)
-    torch.manual_seed(0)
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]  # 连续动作空间
     agent = PPO(state_dim, hidden_dim, action_dim, actor_lr, critic_lr, lmbda, epochs, eps, gamma, device)
