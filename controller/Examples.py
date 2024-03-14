@@ -20,7 +20,24 @@ examples = {
                dt=0.001,
                max_episode=2000,
                goal='reach',
-               name='test')
+               name='test'),
+    2: Example(
+        n_obs=2,
+        u_dim=1,
+        D_zones=Zones('box', low=[-2, -2], up=[2, 2]),
+        I_zones=Zones('box', low=[-0.51, 0.49], up=[-0.49, 0.51]),
+        G_zones=Zones('box', low=[-0.05, -0.05], up=[0.05, 0.05]),
+        U_zones=Zones('box', low=[-0.4, 0.2], up=[0.1, 0.35]),
+        f=[lambda x, u: x[1],
+           lambda x, u: (1 - x[0] ** 2) * x[1] - x[0] + u[0]
+           ],  # 0.01177-3.01604*x1-19.59416*x2+2.96065*x1^2+27.86854*x1*x2+48.41103*x2^2
+        u=3,
+        dense=5,
+        units=64,
+        dt=0.005,
+        max_episode=1500,
+        goal='reach',
+        name='Oscillator')
 }
 
 

@@ -28,7 +28,7 @@ class ReplayBuffer:
 
 class Qnet(nn.Module):
     def __init__(self, state_dim, hidden_dim, action_dim):
-        super(Qnet, self).__init__()
+        super().__init__()
         self.fc1 = torch.nn.Linear(state_dim, hidden_dim)
         self.fc2 = torch.nn.Linear(hidden_dim, action_dim)
 

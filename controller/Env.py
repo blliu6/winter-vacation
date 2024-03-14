@@ -129,7 +129,7 @@ class Env:
         else:
             vis = sum((self.s - self.U_zones.center) ** 2) >= self.U_zones.r ** 2
 
-        if vis ^ self.U_zones.inner:
+        if (vis ^ self.U_zones.inner) and self.goal != 'reach':
             # 进入不安全区域
             done = True
 
@@ -139,7 +139,7 @@ class Env:
         else:
             vis = sum((self.s - self.D_zones.center) ** 2) <= self.D_zones.r ** 2
 
-        if vis ^ self.U_zones.inner:
+        if vis ^ self.D_zones.inner:
             # 超出domain区域,对于超出domain的state的处理
             if self.beyond_domain:
                 done = True
